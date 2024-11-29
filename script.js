@@ -1,33 +1,60 @@
 let humanScore = 0
 let computerScore = 0
 
-
-function getComputerChoice(min, max){
-    computerChoice = Math.floor(Math.random() * (max - min + 1) + min)
-
+function getComputerChoice(){
+    computerChoice = Math.floor(Math.random() * 3)
 
     if (computerChoice === 1){
         console.log("rock")
+        return "rock"
     } else if (computerChoice === 2){
         console.log("paper")
+        return "paper"
     } else {
         console.log("scissors")
-    }
-    
-}
+        return "scissors"
+    } 
+};
 
 function getHumanChoice(){
-    humanChoice = prompt("Rock, Paper or Scissors")
+    humanChoice = prompt("Rock, Paper or Scissors").toLowerCase()
     if (humanChoice === "rock"){
-        humanChoice = 1
         console.log("rock")
+        return "rock"
     } else if (humanChoice === "paper"){
-        humanChoice = 2
-        console.log("paper h")
+        console.log("paper")
+        return "paper"
     } else if (humanChoice === "scissors") {
-        humanChoice = 3
-        console.log("scissors h")
+        console.log("scissors")
+        return "scissors"
     }
-}
+};
 
-// function called playRound
+function playRound(humanChoice, computerChoice) {
+    if (humanChoice === computerChoice){
+        return "Draw!"
+    } else if (humanChoice === "paper" && computerChoice === "rock"
+        || humanChoice === "scissors" && computerChoice === "paper"
+        || humanChoice === "rock" && computerChoice === "scissors") {
+        humanScore++
+        console.log("Player Wins Round!"+ humanScore)
+    } else {
+        computerScore++
+        console.log("Computer Wins!"+ computerScore)
+    }
+  };
+
+function playGame() {
+const humanSelection = getHumanChoice()
+const computerSelection = getComputerChoice(); 
+let humanScore = 0
+let computerScore = 0
+
+  while (humanScore != 5 || computerScore != 5) {
+    playRound();
+  }
+  if (humanScore = 5){
+    console.log("HUMA")
+  }
+};
+playGame();
