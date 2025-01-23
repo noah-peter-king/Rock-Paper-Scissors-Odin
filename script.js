@@ -18,11 +18,12 @@ function getComputerChoice(){
 };
 
 humanChoice = buttons.forEach(function(elem) {
-    elem.addEventListener("input", (event) =>{
+    elem.addEventListener("click", (event) =>{
         let target = event.target;
         switch(target.id){
             case 'rock' :
                 humanChoice = 'rock';
+                console.log('Human Choice Is '+ humanChoice)
                 break;
             case 'paper' :
                 humanChoice = 'paper';
@@ -30,30 +31,16 @@ humanChoice = buttons.forEach(function(elem) {
             case 'scissors' :
                 humanChoice = 'scissors';
                 break;
-        };console.log('Human Choice Is '+ humanChoice)
+        };
     });
 });
-
-
-    /*if (humanChoice === 'rock'){
-        humanChoice = 'rock'
-        console.log('rock')
-        return 'rock'
-    } else if (humanChoice === 'paper'){
-        humanChoice = 'paper'
-        console.log('paper')
-        return 'paper'
-    } else if (humanChoice === 'scissors') {
-        humanChoice = 'scissors'
-        console.log('scissors')
-        return 'scissors'
-    }*/
 
 function playRound(humanChoice, computerChoice) {
     console.log('playing round')
         numOfRounds++
         roundNum.textContent = numOfRounds
         getComputerChoice();
+        console.log('Human = '+ humanChoice + ', Computer = ' + computerChoice)
         if (humanChoice === computerChoice){
             result.textContent = ("Round Draw! Human Score Is "+humanScore
                 + "Computer Score Is " +computerScore);
@@ -85,8 +72,8 @@ function playRound(humanChoice, computerChoice) {
             result.textContent = ("Human Wins The Game Human score is "
                 + humanScore + ", Computer score is "+ computerScore)
         }
-}
+};
 
   buttons.forEach(function(elem) {
-    elem.addEventListener("click", () => playRound(humanChoice, getComputerChoice));
+    elem.addEventListener("click", () => playRound(humanChoice, getComputerChoice()));
 });
